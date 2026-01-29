@@ -1,0 +1,64 @@
+.mobile-navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--navbar-bg);
+  border-top: 1px solid var(--navbar-border);
+  padding: 8px 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.mobile-nav-item i {
+  font-size: 20px;
+  margin-bottom: 2px;
+}
+
+.mobile-nav-item span {
+  font-size: 11px;
+}
+
+.mobile-nav-item:hover {
+  color: var(--accent-color);
+  background-color: var(--bg-tertiary);
+}
+
+.mobile-nav-item.active {
+  color: var(--btn-primary);
+  background-color: var(--bg-tertiary);
+}
+
+.mobile-nav-item.active i {
+  transform: scale(1.1);
+}
+
+/* 为移动端底部导航栏留出空间 */
+body {
+  padding-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
+/* 平板和桌面端隐藏底部导航栏 */
+@media (min-width: 768px) {
+  .mobile-navbar {
+    display: none !important;
+  }
+}

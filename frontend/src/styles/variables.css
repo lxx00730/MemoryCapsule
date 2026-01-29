@@ -1,0 +1,519 @@
+/* 亮色主题变量 */
+:root[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #e9ecef;
+  --text-primary: #212529;
+  --text-secondary: #6c757d;
+  --text-muted: #adb5bd;
+  --border-color: #dee2e6;
+  --accent-color: #667eea;
+  --accent-hover: #5568d3;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --card-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --input-bg: #ffffff;
+  --input-border: #ced4da;
+  --btn-primary: #667eea;
+  --btn-primary-hover: #5568d3;
+  --navbar-bg: #ffffff;
+  --navbar-border: #dee2e6;
+  --scrollbar-bg: #f1f1f1;
+  --scrollbar-thumb: #c1c1c1;
+  --modal-bg: #ffffff;
+  --modal-overlay: rgba(0, 0, 0, 0.5);
+  --body-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* 深色主题变量 */
+:root[data-theme="dark"] {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-tertiary: #0f3460;
+  --text-primary: #e4e4e7;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border-color: #27272a;
+  --accent-color: #818cf8;
+  --accent-hover: #6366f1;
+  --success-color: #22c55e;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #06b6d4;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --input-bg: #1a1a2e;
+  --input-border: #3f3f46;
+  --btn-primary: #818cf8;
+  --btn-primary-hover: #6366f1;
+  --navbar-bg: #16213e;
+  --navbar-border: #27272a;
+  --scrollbar-bg: #1a1a2e;
+  --scrollbar-thumb: #3f3f46;
+  --modal-bg: #1a1a2e;
+  --modal-overlay: rgba(0, 0, 0, 0.7);
+  --body-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+/* 全局样式 */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* 全局卡片和表单样式覆盖 - 使用更强的选择器 */
+body .card,
+body .capsule-card,
+body .capsule-view-container,
+body .create-form,
+body .edit-form,
+body .auth-card,
+body .template-selector,
+body .template-card,
+body .stat-card,
+body .chart-card,
+body .mood-insights,
+body .empty-state,
+body .random-review,
+body .category-item,
+body .capsule-timeline,
+body [class*="card"],
+body [class*="form"],
+body [class*="container"] {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 特别针对 Bootstrap 的 card 类 */
+body .card,
+body .card-body,
+body .card-header,
+body .card-footer {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* 全局内容样式覆盖 */
+body .content-text,
+body .capsule-content,
+body .capsule-meta,
+body .capsule-content-opened,
+body .capsule-timeline,
+body .timeline-container {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* 全局表单元素样式覆盖 */
+body .form-control,
+body .form-select,
+body .input-group-text {
+  background-color: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--input-border) !important;
+}
+
+body .form-control:focus,
+body .form-select:focus {
+  background-color: var(--input-bg) !important;
+  border-color: var(--accent-color) !important;
+  color: var(--text-primary) !important;
+}
+
+body .form-control::placeholder,
+body .form-select::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* 卡片样式 */
+.card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  box-shadow: var(--card-shadow);
+}
+
+.card-header {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* 表单样式 */
+.form-control {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+.form-control:focus {
+  background-color: var(--input-bg);
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-select {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+.form-select:focus {
+  background-color: var(--input-bg);
+  border-color: var(--accent-color);
+  color: var(--text-primary);
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+/* 按钮样式 */
+.btn-primary {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
+}
+
+.btn-outline-primary {
+  color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-color);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+/* 导航栏样式 */
+.navbar {
+  background-color: var(--navbar-bg);
+  border-bottom: 1px solid var(--navbar-border);
+}
+
+.nav-link {
+  color: var(--text-secondary);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-color);
+}
+
+/* 模态框样式 */
+.modal-content {
+  background-color: var(--modal-bg);
+  border-color: var(--border-color);
+}
+
+.modal-header,
+.modal-footer {
+  border-color: var(--border-color);
+}
+
+.modal-title {
+  color: var(--text-primary);
+}
+
+/* 表格样式 */
+.table {
+  color: var(--text-primary);
+}
+
+.table thead th {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.table tbody tr {
+  border-color: var(--border-color);
+}
+
+.table tbody tr:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* 标签样式 */
+.badge {
+  color: var(--text-primary);
+}
+
+.badge-light {
+  background-color: var(--bg-tertiary);
+}
+
+/* 提示框样式 */
+.alert {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.alert-success {
+  background-color: rgba(40, 167, 69, 0.1);
+  border-color: var(--success-color);
+  color: var(--success-color);
+}
+
+.alert-danger {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  border-color: var(--warning-color);
+  color: var(--warning-color);
+}
+
+.alert-info {
+  background-color: rgba(23, 162, 184, 0.1);
+  border-color: var(--info-color);
+  color: var(--info-color);
+}
+
+/* 下拉菜单样式 */
+.dropdown-menu {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dropdown-item {
+  color: var(--text-primary);
+}
+
+.dropdown-item:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* 链接样式 */
+a {
+  color: var(--accent-color);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* 工具提示样式 */
+.tooltip {
+  --bs-tooltip-bg: var(--bg-tertiary);
+  --bs-tooltip-color: var(--text-primary);
+}
+
+/* 分页样式 */
+.page-link {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.page-link:hover {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.page-item.active .page-link {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+/* 列表组样式 */
+.list-group-item {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.list-group-item:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.list-group-item.active {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+/* 输入组样式 */
+.input-group-text {
+  background-color: var(--bg-tertiary);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+/* 进度条样式 */
+.progress {
+  background-color: var(--bg-tertiary);
+}
+
+/* 切换开关样式 */
+.form-check-input {
+  background-color: var(--bg-tertiary);
+  border-color: var(--input-border);
+}
+
+.form-check-input:checked {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
+}
+
+/* 范围输入样式 */
+.form-range::-webkit-slider-thumb {
+  background: var(--btn-primary);
+}
+
+.form-range::-webkit-slider-runnable-track {
+  background-color: var(--bg-tertiary);
+}
+
+/* 浮动标签样式 */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label,
+.form-floating > .form-select ~ label {
+  color: var(--text-secondary);
+}
+
+/* 胶囊视图特定样式 */
+.capsule-view-container {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.capsule-sealed-view,
+.capsule-opened-view {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* 时间轴样式 */
+.timeline-item {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.timeline-item:hover {
+  background-color: var(--bg-tertiary);
+}
+
+/* 心情统计图表 */
+.chart-container {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* Toast 消息样式 */
+.toast-container {
+  --bs-toast-bg: var(--bg-secondary);
+  --bs-toast-color: var(--text-primary);
+  --bs-toast-border-color: var(--border-color);
+}
+
+/* 分类管理样式 */
+.category-item {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+.category-item:hover,
+.category-item.active {
+  background-color: var(--bg-tertiary);
+}
+
+/* 创建/编辑表单样式 */
+.create-form,
+.edit-form {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+/* 心情选择器样式 */
+.mood-btn {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.mood-btn:hover {
+  background-color: var(--border-color);
+}
+
+.mood-btn.active {
+  background-color: var(--btn-primary);
+  border-color: var(--btn-primary);
+  color: white;
+}
+
+/* 标签样式 */
+.tags-display .badge {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* 图片预览样式 */
+.img-preview {
+  border-color: var(--border-color);
+  background-color: var(--bg-tertiary);
+}
+
+/* 加载动画样式 */
+.spinner-border {
+  color: var(--btn-primary);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  /* 移动端特定样式 */
+  .navbar-collapse {
+    background-color: var(--navbar-bg);
+  }
+
+  .dropdown-menu {
+    background-color: var(--navbar-bg);
+  }
+}

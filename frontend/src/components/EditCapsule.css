@@ -1,0 +1,100 @@
+.edit-form {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px;
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form h2 {
+  color: #333;
+  font-weight: 600;
+}
+
+.mood-selector {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.mood-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--bg-tertiary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mood-btn:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.mood-btn.active {
+  border-color: #667eea;
+  background: #667eea;
+  color: white;
+}
+
+.mood-emoji {
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.mood-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.tag-input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.tag-input-group .form-control {
+  flex: 1;
+}
+
+.tags-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.img-preview {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.button-group .btn {
+  flex: 1;
+  padding: 12px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .edit-form {
+    padding: 20px;
+  }
+
+  .mood-selector {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,22 @@
+# Python虚拟环境
+venv/
+env/
+.env
+
+# 数据库文件
+*.db
+
+# 上传文件目录
+uploads/
+
+# Windows临时文件
+*.tmp
+*.bak
+
+# Python缓存文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 日志文件
+*.log

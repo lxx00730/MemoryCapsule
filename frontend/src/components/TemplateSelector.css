@@ -1,0 +1,138 @@
+.template-selector-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.template-selector-container {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.template-selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #eee;
+}
+
+.template-selector-header h3 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+}
+
+.template-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.template-card {
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--bg-tertiary);
+}
+
+.template-card:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.template-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.template-card-header h4 {
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.template-card-body {
+  margin-bottom: 15px;
+}
+
+.template-card-body h5 {
+  margin: 0 0 10px 0;
+  color: #555;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.template-card-body p {
+  margin: 0;
+  color: #666;
+  line-height: 1.5;
+  font-size: 0.9rem;
+}
+
+.template-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.mood-indicator {
+  font-size: 1.5rem;
+}
+
+.tags-count {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.template-selector-footer {
+  padding: 15px 25px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.empty-state i {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .template-selector-container {
+    max-height: 95vh;
+  }
+
+  .template-list {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+
+  .template-card {
+    padding: 15px;
+  }
+}
