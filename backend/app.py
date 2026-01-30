@@ -1,15 +1,16 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import urllib.parse
 import uuid
 import hashlib
 import secrets
 import re
-import cgi
 import io
+import email
+from email import message_from_bytes
 
 # 获取当前脚本所在目录的绝对路径
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -634,38 +635,37 @@ class RequestHandler(BaseHTTPRequestHandler):
                 body_bytes = self.rfile.read(content_length)
                 print(f'[UPLOAD] Read {len(body_bytes)} bytes')
 
-                # 使用 cgi 模块解析 multipart 数据
+# 使用 email 模块解析 multipart 数据（替代已弃用的 cgi）
                 try:
-                    fp = io.BytesIO(body_bytes)
-                    environ = {
-                        'REQUEST_METHOD': 'POST',
-                        'CONTENT_TYPE': content_type,
-                        'CONTENT_LENGTH': str(content_length)
-                    }
+                    # 解析 multipart/form-data
+                    msg = message_from_bytes(
+                        b'Content-Type: ' + content_type.encode() + b'\n\n' + body_bytes
+                    )
 
-                    form = cgi.FieldStorage(fp=fp, environ=environ)
+                    file_data = None
+                    filename = None
 
-                    if 'file' not in form:
-                        print('[UPLOAD] No file field found in form')
+                    # 查找文件字段
+                    for part in msg.walk():
+                        content_disposition = part.get('Content-Disposition', '')
+                        if 'name="file"' in content_disposition:
+                            filename = part.get_filename()
+                            if filename:
+                                filename = os.path.basename(filename)
+                                file_data = part.get_payload(decode=True)
+                                break
+
+                    if not filename or not file_data:
+                        print('[UPLOAD] No file found in request')
                         send_json_response(self, {'error': 'No file uploaded'}, 400)
                         return
 
-                    file_item = form['file']
-
-                    if not file_item.filename:
-                        print('[UPLOAD] No filename in file field')
-                        send_json_response(self, {'error': 'No file selected'}, 400)
-                        return
-
-                    filename = os.path.basename(file_item.filename)
                     print(f'[UPLOAD] Original filename: {filename}')
 
                     if not allowed_file(filename):
                         print(f'[UPLOAD] Invalid file type: {filename}')
                         send_json_response(self, {'error': 'Invalid file type. Allowed: png, jpg, jpeg, gif, webp'}, 400)
                         return
-
-                    file_data = file_item.file.read()
 
                     if len(file_data) > MAX_FILE_SIZE:
                         print(f'[UPLOAD] File too large: {len(file_data)} bytes')
@@ -863,7 +863,6 @@ class RequestHandler(BaseHTTPRequestHandler):
                     return
                 
                 try:
-                    from datetime import datetime, timedelta
                     import email_sender
                     
                     conn = get_db()
